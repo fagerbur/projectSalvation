@@ -1,0 +1,38 @@
+<!-- the introduction and navigation -->
+
+Welcome to Project Salvation.
+
+This is an interactive journey designed to teach the principles of The Plan of Salvation 
+based on the teachings of The Church of Jesus Christ of Latter-Day Saints.
+
+This project is NOT affiliated with The Church of Jesus Christ of Latter-Day Saints.
+
+This is a primarily point and click controlled journey that can be completed on any desktop, mobile or VR platform.
+
+Let's start off at the very beginning...
+
+Where did we come from?
+
+<!-- the pre-existence -->
+
+"God is the Father of our spirits. We are literally His children, and He loves us. We lived as spirit children of our Father in Heaven before we were born on this earth."
+
+Jeremiah 1:5
+Old Testament
+5 Before I formed thee in the belly I knew thee; and before thou camest forth out of the womb I sanctified thee, and I ordained thee a prophet unto the nations.
+
+<!-- the creation -->
+
+<!-- the fall -->
+
+<!-- the life on earth -->
+
+<!-- the atonement -->
+
+<!-- the spirit world -->
+
+<!-- the resurrection, judgement and immortality -->
+
+<!-- the kingdoms of glory -->
+
+<!-- the conclusion -->
