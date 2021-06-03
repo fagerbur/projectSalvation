@@ -1,4 +1,4 @@
-AFRAME.registerComponent('titlescroll', {
+AFRAME.registerComponent('title-scroll', {
     init:function() {
       this.el.addEventListener('click', function (evt) {
         var title = document.getElementById("WelcomeText")
@@ -18,7 +18,7 @@ AFRAME.registerComponent('titlescroll', {
     }
   });
 
-AFRAME.registerComponent('nextone', {
+AFRAME.registerComponent('next-one', {
   init:function() {
     this.el.addEventListener('click', function (evt) {
         var camera = document.getElementById("CameraRig")

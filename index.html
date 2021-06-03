@@ -3,20 +3,29 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-cubemap-component@2.1.1/dist/aframe-cubemap-component.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    
     <script src="https://unpkg.com/aframe-lensflare-component/dist/aframe-lensflare-component.min.js"></script>
     <!-- embedded scripts -->
     <script src="js/mouse-navigation.js"></script>
     <script src="js/rounded.js"></script>
+    <script src="js/utilities.js"></script>
   </head>
   <body>
     <!-- <audio src="audio/kingsfold.mp3" type="audio/mpeg" playbackRate=".25" autoplay></audio> -->
     <a-scene webxr="referenceSpaceType: local" environment cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable" info-message="htmlSrc: #messageText">
-      <a-assets>
+      <img>
         <a-asset-item id="messageText" src="templates/information.html"></a-asset-item>
         <img id="cloud" src="images/materials/cloud_texture.jpg">
         <img id="rock" src="images/materials/Rock037_1K-JPG/Rock037_1K_Color.jpg">
         <img id="rockNormal" src="images/materials/Rock037_1K-JPG/Rock037_1K_Normal.jpg">
+        <img id="wood" src="images/materials/Wood027_1K-JPG//Wood027_1K_Color.jpg">
+        <img id="woodNormal" src="images/materials/Wood027_1K-JPG/Wood027_1K_Normal.jpg">
         <img id="earth" src="images/materials/planet_earth.jpg">
+        <img id="atonementImage" src="images/atonement/jesus_praying_in_gethsemane.jpeg">
+        <img id="arrow" src="images/navigation/arrow-256.png">
+        <img id="play" src="images/atonement/play-256.png">
+        <img id="pause" src="images/atonement/pause-256.png">
+        <video id="BecauseOfHim" preload="auto" src="video/2014-00-1420-because-of-him-720p-eng.mp4" width="160" height="90" crossOrigin="anonymous" playsinline="" webkit-playsinline=""></video>
 
         <img src="images/materials/flare.jpg" alt="Test Lensflare Asset" id="flare-asset">
       </a-assets>
@@ -34,7 +43,7 @@
         ></a-torus>
       </a-entity>  
 
-      <a-entity id="MouseCursor" cursor="rayOrigin: mouse" raycaster="objects: #Start, #NextOne"></a-entity>
+      <a-entity id="MouseCursor" cursor="rayOrigin: mouse" raycaster="objects: #Start, #NextOne, #PlayControl, #PauseControl"></a-entity>
 
       <!-- the introduction and navigation -->
       <a-entity id="Beginning">
@@ -48,23 +57,24 @@
           text="width: 2; color: white; transparent: true; opacity: 0;
           shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-Regular.json;
           value: This is an interactive experience based on the plan of salvation. It is NOT affiliated with the Church of Jesus Christ of Latter-Day Saints.">
+            <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+              transparent="true" opacity=".65" visible="false" next-one
+              animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+              animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+              animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+              animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+            </a-image>
         </a-entity>
 
         <a-rounded id="Start" material="color: dodgerblue; emissive: dodgerblue; emissiveIntensity: .5;" position="0 1.15 -1.99" width=".5" height=".2" radius="0.1"
         animation__mouseenter="property: components.material.material.color; type: color; from: dodgerblue; to: lightblue; startEvents: mouseenter; dur: 200"
         animation__mouseleave="property: components.material.material.color; type: color; from: lightblue; to: dodgerblue; startEvents: mouseleave; dur: 200"
-        titlescroll>
+        title-scroll>
           <a-entity id="StartButtonText" position=".89 -.05 0" 
           text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
           value: Start">
           </a-entity>
         </a-rounded>
-
-        <a-entity id="NextOne" geometry="primitive: triangle" material="color: dodgerblue; emissive: dodgerblue; emissiveIntensity: .5;" 
-        position=".85 1.15 -1.99" rotation="0 0 -90" scale=".2 .2" visible="false" nextone
-        animation__mouseenter="property: components.material.material.color; type: color; from: dodgerblue; to: lightblue; startEvents: mouseenter; dur: 200"
-        animation__mouseleave="property: components.material.material.color; type: color; from: lightblue; to: dodgerblue; startEvents: mouseleave; dur: 200">
-        </a-entity>
       </a-entity>
 
       <!-- the pre-existence -->
@@ -73,6 +83,13 @@
         <a-entity id="PreExistText" position="2 .25 -.1" rotation="0 -35 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
         value: Pre-Existence">
+          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+            transparent="true" opacity=".65" next-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
         </a-entity>
 
         <a-entity position="0 1.65 0" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#PreSpirit"></a-entity>
@@ -83,19 +100,21 @@
         radius="1" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:25000;"></a-sphere>
 
         <!-- <a-box position="10 0 -2.5" scale="2.5 .05 2" material="shader: flat; color: #BBB; opacity: .25; transparent:true;"></a-box> -->
-        <a-entity id="NextOne" geometry="primitive: triangle" material="color: dodgerblue; emissive: dodgerblue; emissiveIntensity: .5;" 
-        position="2.1 .1 0" rotation="0 -35 -90" scale=".2 .2" visible="true" nextone
-        animation__mouseenter="property: components.material.material.color; type: color; from: dodgerblue; to: lightblue; startEvents: mouseenter; dur: 200"
-        animation__mouseleave="property: components.material.material.color; type: color; from: lightblue; to: dodgerblue; startEvents: mouseleave; dur: 200">
-        </a-entity>
       </a-entity>
 
       <!-- the creation & fall -->
-      <a-entity id="CreationFall" visible="true" position="20 1.35 -2">
+      <a-entity id="CreationFall" visible="false" position="20 1.35 -2">
         <a-box position="1.5 .25 -.5" scale="2 .8 .05" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
         <a-entity id="CreationText" position="2 .25 -.1" rotation="0 -35 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
         value: Creation & Fall">
+          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+            transparent="true" opacity=".65" next-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
         </a-entity>
 
         <a-entity position="0 1.65 0" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#Creation"></a-entity>
@@ -106,19 +125,21 @@
         radius="1" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:25000;"></a-sphere>
 
         <!-- <a-box position="10 0 -2.5" scale="2.5 .05 2" material="shader: flat; color: #BBB; opacity: .25; transparent:true;"></a-box> -->
-        <a-entity id="NextOne" geometry="primitive: triangle" material="color: dodgerblue; emissive: dodgerblue; emissiveIntensity: .5;" 
-        position="2.1 .1 0" rotation="0 -35 -90" scale=".2 .2" visible="true" nextone
-        animation__mouseenter="property: components.material.material.color; type: color; from: dodgerblue; to: lightblue; startEvents: mouseenter; dur: 200"
-        animation__mouseleave="property: components.material.material.color; type: color; from: lightblue; to: dodgerblue; startEvents: mouseleave; dur: 200">
-        </a-entity>
       </a-entity>
 
       <!-- the life on earth -->
-      <a-entity id="Earth" visible="true" position="30 1.35 -2">
+      <a-entity id="EarthLife" visible="false" position="30 1.35 -2">
         <a-box position="1.5 .25 -.5" scale="2 .8 .05" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="CreationText" position="2 .25 -.1" rotation="0 -35 0"
+        <a-entity id="LifeText" position="2 .25 -.1" rotation="0 -35 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
         value: Life On Earth">
+          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+            transparent="true" opacity=".65" next-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
         </a-entity>
 
         <a-entity position="0 1.65 0" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#Earth"></a-entity>
@@ -129,15 +150,33 @@
         radius="1" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:25000;"></a-sphere>
 
         <!-- <a-box position="10 0 -2.5" scale="2.5 .05 2" material="shader: flat; color: #BBB; opacity: .25; transparent:true;"></a-box> -->
-        <a-entity id="NextOne" geometry="primitive: triangle" material="color: dodgerblue; emissive: dodgerblue; emissiveIntensity: .5;" 
-        position="2.1 .1 0" rotation="0 -35 -90" scale=".2 .2" visible="true" nextone
-        animation__mouseenter="property: components.material.material.color; type: color; from: dodgerblue; to: lightblue; startEvents: mouseenter; dur: 200"
-        animation__mouseleave="property: components.material.material.color; type: color; from: lightblue; to: dodgerblue; startEvents: mouseleave; dur: 200">
-        </a-entity>
       </a-entity>
 
       <!-- the atonement -->
-      <a-sphere color="yellow" radius=".1" position=".15 1 -25"></a-sphere>
+      <a-entity id="Atonement" visible="false" position="40 1.35 -2">
+        <a-box position="1.5 .25 -.5" scale="2 .8 .05" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="AtonementText" position="2 .25 -.1" rotation="0 -35 0"
+        text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
+        value: Atonement">
+          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+            transparent="true" opacity=".65" next-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
+        </a-entity>
+
+        <a-image id="Atonement" src="#atonementImage" position="-5 .15 -1" scale="2 2" rotation="0 35 0"></a-image>
+        <a-box id="PictureFrame" position="-5.025 .15 -1.025" rotation="0 -55 0" scale=".05 2.2 2.2" 
+        material="src:#wood; roughness: 1; normalMap:#woodNormal; metalness: 0;"></a-box>
+        <a-video id="christVideo" src="#BecauseOfHim" position="-1.5 0 -1" width="4" height="2.25">
+          <a-image id="PlayControl" src="#play" position="0 -1.5 .025" scale=".5 .5" play-control></a-image>
+          <a-image id="PauseControl" src="#pause" position="0 -1.5 .025" scale="0 0" pause-control></a-image>
+        </a-video>
+
+        <!-- <a-box position="10 0 -2.5" scale="2.5 .05 2" material="shader: flat; color: #BBB; opacity: .25; transparent:true;"></a-box> -->
+      </a-entity>
 
       <!-- the spirit world -->
       <a-sphere color="yellow" radius=".1" position=".15 1 -30"></a-sphere>
