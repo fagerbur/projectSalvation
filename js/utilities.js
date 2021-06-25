@@ -25,11 +25,24 @@ AFRAME.registerComponent('next-one', {
         var x = camera.getAttribute("position").x + 10
         camera.setAttribute("animation","property: position; to: "+ x +" 1.6 0; dur: 5000; easing: easeInOutQuad; delay:1000; autoplay: true;")
 
-        document.getElementById("Beginning").setAttribute("animation","property: visible; to:false; delay:4000; autoplay:true;")
-        document.getElementById("PreExistence").setAttribute("animation","property: visible; to:true; delay:1000; autoplay:true;")
+        // document.getElementById("Beginning").setAttribute("animation","property: visible; to:false; delay:4000; autoplay:true;")
+        // document.getElementById("PreExistence").setAttribute("animation","property: visible; to:true; delay:1000; autoplay:true;")
     });
   }
 });
+
+AFRAME.registerComponent('prev-one', {
+    init:function() {
+      this.el.addEventListener('click', function (evt) {
+          var camera = document.getElementById("CameraRig")
+          var x = camera.getAttribute("position").x - 10
+          camera.setAttribute("animation","property: position; to: "+ x +" 1.6 0; dur: 5000; easing: easeInOutQuad; delay:1000; autoplay: true;")
+  
+        //   document.getElementById("Beginning").setAttribute("animation","property: visible; to:false; delay:4000; autoplay:true;")
+        //   document.getElementById("PreExistence").setAttribute("animation","property: visible; to:true; delay:1000; autoplay:true;")
+      });
+    }
+  });
 
 AFRAME.registerComponent("play-control", {
     init: function () {
