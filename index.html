@@ -14,6 +14,12 @@
     <a-scene webxr="referenceSpaceType: local" environment cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable" info-message="htmlSrc: #messageText">
       <img>
         <a-asset-item id="messageText" src="templates/information.html"></a-asset-item>
+        <img id="c1" src="images/creation/new_zealand_landscape.jpeg">
+        <img id="c2" src="images/creation/otters_lisbon.jpeg">
+        <img id="c3" src="images/creation/sunrise_japan.jpeg">
+        <img id="c4" src="images/creation/mouflon.jpeg">
+        <img id="c5" src="images/creation/spring_peach_blossoms.jpeg">
+        <img id="c6" src="images/creation/cedar_tree.jpeg">
         <img id="cloud" src="images/materials/cloud_texture.jpg">
         <img id="rock" src="images/materials/Rock037_1K-JPG/Rock037_1K_Color.jpg">
         <img id="rockNormal" src="images/materials/Rock037_1K-JPG/Rock037_1K_Normal.jpg">
@@ -90,13 +96,25 @@
       </a-entity>
 
       <!-- the pre-existence -->
-      <a-entity id="PreExistence" visible="false" position="10 1.35 -2">
-        <a-box position="1.5 .25 -.5" scale="2 .8 .05" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="PreExistText" position="2 .25 -.1" rotation="0 -35 0"
+      <a-entity id="PreExistence" visible="true" position="10 1.35 -2">
+        <a-box position="1.5 .25 -.5" scale="2 1.3 0" rotation="0 -15 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="PreExistText" position="1.5 .7 -.475" rotation="0 -15 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
-        value: Pre-Existence">
-          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+        align: center; value: Premortal Life">
+          <a-entity id="PreExistSummary" position="0 -.45 0"
+            text="width: 1.9; wrapCount: 55; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
+            align: center; value: Before we came to Earth we lived with God. He is the father of our spirits. We are his children and He loves us. He wants us to become like Him. His whole purpose is to enable us to enjoy all of His blessings. In order to do so, He created this plan and gave us the ability to freely choose our own path on Earth. He sent his son Jesus Christ to be an example and a guide for us and if we do our best to do what is right, we can return to be with Him.
+            (Ref. Jeremiah 1:5, Hebrews 12:9)">
+          </a-entity>
+          <a-image id="NextOne" src="#arrow" position=".8 -.95 0" scale=".2 .2" 
             transparent="true" opacity=".65" next-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
+          <a-image id="PrevOne" src="#arrow" position="-.825 -.95 0" scale=".2 .2" rotation="0 180"
+            transparent="true" opacity=".65" prev-one
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
             animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
             animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
@@ -116,37 +134,65 @@
 
       <!-- the creation & fall -->
       <a-entity id="CreationFall" visible="false" position="20 1.35 -2">
-        <a-box position="1.5 .25 -.5" scale="2 .8 .05" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="CreationText" position="2 .25 -.1" rotation="0 -35 0"
+        <a-box position="0 -.25 -.025" scale="2 .85 .05" rotation="-25 0 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="CreationText" position="0 0 -.1" rotation="-25 0 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
-        value: Creation & Fall">
-          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+        align: center; value: The Creation & Fall">
+          <a-entity id="CreationSummary" position="0 -.275 0"
+            text="width: 1.9; wrapCount: 55; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
+            align: center; value: This Earth was created for us. Adam and Eve, our first parents, introduced sin into the world. This was part of God's plan and it allowed us all to be born. We don't remember our life before this Earth, this encourages us to have faith in this plan and trust in our Savior Jesus Christ as we learn and grow throughout our lives.
+            (Ref. Isaiah 42:5, 1 Nephi 17:36, Alma 22:12-14)">
+          </a-entity>
+          <a-image id="NextOne" src="#arrow" position=".8 -.55 0" scale=".2 .2" 
             transparent="true" opacity=".65" next-one
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
             animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
             animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
             animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
           </a-image>
+          <a-image id="PrevOne" src="#arrow" position="-.825 -.55 0" scale=".2 .2" rotation="0 180"
+            transparent="true" opacity=".65" prev-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
         </a-entity>
+        
+        <a-image id="createImage" src="#c1" position="-2.5 .25 -1" scale="2 2"></a-image>
+        <a-image id="createImage" src="#c2" position="-2.25 2.5 -1" scale="2 2"></a-image>
+        <a-image id="createImage" src="#c3" position="0 3.25 -1" scale="2 2"></a-image>
+        <a-image id="createImage" src="#c4" position="2.25 2.5 -1" scale="2 2"></a-image>
+        <a-image id="createImage" src="#c5" position="2.5 .25 -1" scale="2 2"></a-image>
 
-        <a-entity position="0 1.65 0" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#Creation"></a-entity>
-        <a-entity position="0 -.5 1" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#Creation"></a-entity>
+        <a-entity position="0 2.5 0" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#Creation"></a-entity>
+        <a-entity position="0 .35 1" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#Creation"></a-entity>
         <a-sphere material="src:#rock; roughness: 1; normalMap:#rockNormal; emissive: orange; emissiveIntensity: .05;" 
-        radius=".98" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:30000;"></a-sphere>
+        radius=".98" position="0 1 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:30000;"></a-sphere>
         <a-sphere id="Creation" material="src:#cloud; transparent:true; opacity:0.25; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
-        radius="1" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:25000;"></a-sphere>
-
-        <!-- <a-box position="10 0 -2.5" scale="2.5 .05 2" material="shader: flat; color: #BBB; opacity: .25; transparent:true;"></a-box> -->
+        radius="1" position="0 1 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:25000;"></a-sphere>
       </a-entity>
 
       <!-- the life on earth -->
       <a-entity id="EarthLife" visible="false" position="30 1.35 -2">
-        <a-box position="1.5 .25 -.5" scale="2 .8 .05" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="LifeText" position="2 .25 -.1" rotation="0 -35 0"
+        <a-box position="1.5 .25 -.5" scale="2 1.3 0" rotation="0 -15 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="LifeText" position="1.5 .7 -.475" rotation="0 -15 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
-        value: Life On Earth">
-          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+        align: center; value: Life on Earth">
+          <a-entity id="LifeSummary" position="0 -.45 0"
+            text="width: 1.9; wrapCount: 55; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
+            align: center; value: Our lives on Earth are filled with both wonderful opportunities and challenging experiences. The purpose of this life is to find happiness and prepare to return to God's presence. We each have the ability to choose how we want to live our lives but because of the Fall, we all sin and need forgiveness to return to be with our Heavenly Father. Although Satan will tempt us into sin, we can overcome any difficulty we face in this life through Jesus Christ. This doesn't mean that we won't struggle or experience pain but by living the Gospel of Jesus Christ we can have lasting joy, hope and peace.
+            (Ref. Alma 34:31-32, 2 Nephi 2:27-28)">
+          </a-entity>
+          <a-image id="NextOne" src="#arrow" position=".8 -.95 0" scale=".2 .2" 
             transparent="true" opacity=".65" next-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
+          <a-image id="PrevOne" src="#arrow" position="-.825 -.95 0" scale=".2 .2" rotation="0 180"
+            transparent="true" opacity=".65" prev-one
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
             animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
             animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
@@ -163,13 +209,25 @@
       </a-entity>
 
       <!-- the atonement -->
-      <a-entity id="Atonement" visible="false" position="40 1.35 -2">
-        <a-box position="1.5 .25 -.5" scale="2 .8 .05" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="AtonementText" position="2 .25 -.1" rotation="0 -35 0"
+      <a-entity id="Atonement" visible="false" position="40 1.35 -1.75">
+        <a-box position="1.35 -.21 -.75" scale="2 1.3 0" rotation="0 -5 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="AtonementText" position="1.35 .25 -.725" rotation="0 -5 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
-        value: Atonement">
-          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+        align: center; value: The Atonement">
+          <a-entity id="AtonementSummary" position="0 -.5 0"
+            text="width: 1.9; wrapCount: 55; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
+            align: center; value: The Atonement of Jesus Christ made this entire plan possible. He was chosen before the creation of the world to redeem us. Christ suffered and paid the price for our sins in the Garden of Gethsemane as well as on the cross at Calvary. His death and resurrection enable all of us to one day be resurrected. In spite of challenges and difficulties in life, we can find peace and hope in Christ. Because we are imperfect, we could not return to God’s presence without Christ’s sacrifice. We can all become clean again through the Atonement of Jesus Christ if we have faith in Him, repent, are baptized, receive the Holy Ghost and live His Gospel to the best of our ability throughout our lives.
+            (Ref. John 3:16-17, 2 Nephi 2:6-8)">
+          </a-entity>
+          <a-image id="NextOne" src="#arrow" position=".8 -.95 0" scale=".2 .2" 
             transparent="true" opacity=".65" next-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
+          <a-image id="PrevOne" src="#arrow" position="-.825 -.95 0" scale=".2 .2" rotation="0 180"
+            transparent="true" opacity=".65" prev-one
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
             animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
             animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
@@ -177,23 +235,36 @@
           </a-image>
         </a-entity>
 
-        <a-image id="AtonementImg" src="#atonementImage" position="-5 .15 -1" scale="2 2" rotation="0 35 0"></a-image>
-        <a-box id="PictureFrame" position="-5.025 .15 -1.025" rotation="0 -55 0" scale=".05 2.2 2.2" 
+        <a-image id="AtonementImg" src="#atonementImage" position="-1.5 -.5 -1" scale="2 2" rotation="0 5 0"></a-image>
+        <a-box id="PictureFrame" position="-1.525 -.5 -1.025" rotation="0 -85 0" scale=".05 2.2 2.2" 
         material="src:#wood; roughness: 1; normalMap:#woodNormal; metalness: 0;"></a-box>
-        <a-video id="christVideo" src="#BecauseOfHim" position="-1.5 0 -1" width="4" height="2.25">
-          <a-image id="PlayControl" src="#play" position="0 -1.5 .025" scale=".5 .5" play-control></a-image>
-          <a-image id="PauseControl" src="#pause" position="0 -1.5 .025" scale="0 0" pause-control></a-image>
+
+        <a-video id="christVideo" src="#BecauseOfHim" position="0 2 -1" width="4" height="2.25" rotation="10 0 0">
+          <a-image id="PlayControl" src="#play" position="0 -1.45 .025" scale=".5 .5" play-control></a-image>
+          <a-image id="PauseControl" src="#pause" position="0 -1.45 .025" scale="0 0" pause-control></a-image>
         </a-video>
       </a-entity>
 
       <!-- the spirit world -->
       <a-entity id="SpiritWorld" visible="false" position="50 1.35 -2">
-        <a-box position="1.5 .25 -.5" scale="2 .8 .05" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="SpiritWorldText" position="2 .25 -.1" rotation="0 -35 0"
+        <a-box position="1.5 .25 -.5" scale="2 1.2 0" rotation="0 -15 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="SpiritWorldText" position="1.5 .65 -.475" rotation="0 -15 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
-        value: Spirit World">
-          <a-image id="NextOne" src="#arrow" position=".2 -.25 0" scale=".2 .2" 
+        align: center; value: The Spirit World">
+          <a-entity id="SpiritWorldSummary" position="0 -.4 0"
+            text="width: 1.9; wrapCount: 55; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
+            align: center; value: At death, our spirits and our bodies are separated. As spirits we will await the resurrection in the spirit world. If we chose to obey God during our earthly lives we will be able to wait in a state of peace and rest. If we chose not to, then we will wait in a state of discontent. There have been many who did not have the opportunity to hear the gospel during their lives and in the spirit world, the gospel will be preached to everyone. All will have an equal opportunity to accept and come unto Christ.
+            (Ref. 1 Peter 4:6, Alma 11:41-43)">
+          </a-entity>
+          <a-image id="NextOne" src="#arrow" position=".8 -.8 0" scale=".2 .2" 
             transparent="true" opacity=".65" next-one
+            animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
+            animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
+            animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
+            animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
+          </a-image>
+          <a-image id="PrevOne" src="#arrow" position="-.825 -.8 0" scale=".2 .2" rotation="0 180"
+            transparent="true" opacity=".65" prev-one
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
             animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
             animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
@@ -201,8 +272,8 @@
           </a-image>
         </a-entity>
 
-        <a-entity position="-5 8.15 -1" light="type: spot; color: #2471a3; intensity: 8.0; penumbra: 1; distance: 25; target:#SpiritWorld"></a-entity>
-        <a-entity position="3 -7.85 -1" light="type: spot; color: #a93226; intensity: 8.0; penumbra: 1; distance: 25; target:#SpiritWorld"></a-entity>
+        <a-entity position="-3 3 -.15" light="type: spot; color: #2471a3; intensity: 15.0; penumbra: 1; distance: 25; decay: 5; target:#SpiritWorld"></a-entity>
+        <a-entity position="3 -5 -1" light="type: spot; color: #a93226; intensity: 7.0; penumbra: 1; distance: 25; target:#SpiritWorld"></a-entity>
         <a-sphere material="src:#cloud; transparent:true; opacity:0.15; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
         radius=".98" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:30000;"></a-sphere>
         <a-sphere id="SpiritWorld" material="src:#cloud; transparent:true; opacity:0.25; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
@@ -212,9 +283,9 @@
       </a-entity>
 
       <!-- the resurrection, judgement and immortality -->
-      <a-entity id="Resurrection" visible="true" position="10 1.35 -2">
-        <a-box position="1.5 .25 -.5" scale="2 1.2 0" rotation="0 -35 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="ResurrectionText" position="1.5 .65 -.475" rotation="0 -35 0"
+      <a-entity id="Resurrection" visible="false" position="60 1.35 -2">
+        <a-box position="1.75 .25 -.5" scale="2 1.2 0" rotation="0 -15 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="ResurrectionText" position="1.75 .65 -.475" rotation="0 -15 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
         align: center; value: Resurrection & Judgement">
           <a-entity id="ResurrectionSummary" position="0 -.4 0"
@@ -246,7 +317,7 @@
           material="src:#tomb; roughness: 1; metalness: 0; normalMap:#tombNormal; 
           displacementMap:#tombDisplace; displacementScale:.05; displacementBias: -.05;"
           transparent="true" opacity="1"
-          animation__scale="property: radius; to: 1.6; startEvents: mouseenter; dur: 200"
+          animation__scale="property: radius; to: 1.55; startEvents: mouseenter; dur: 200"
           animation__unscale="property: radius; to: 1.5; startEvents: mouseleave; dur: 200"
           tombstone-roll>
         </a-cylinder>
@@ -254,8 +325,8 @@
 
       <!-- the kingdoms of glory -->
       <a-entity id="Kingdoms" visible="false" position="70 1.35 -2">
-        <a-box position="0 -.25 -.025" scale="2 1.5 .05" rotation="-35 0 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="KingdomsText" position="0 .2 -.25" rotation="-35 0 0"
+        <a-box position="0 -.25 -.025" scale="2 1.5 .05" rotation="-25 0 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="KingdomsText" position="0 .25 -.2" rotation="-25 0 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
         align: center; value: The Kingdoms of Glory">
           <a-entity id="KingdomsSummary" position="0 -.4 0"
