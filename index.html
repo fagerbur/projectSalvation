@@ -10,10 +10,12 @@
     <script src="js/utilities.js"></script>
   </head>
   <body>
-    <!-- <audio src="audio/kingsfold.mp3" type="audio/mpeg" playbackRate=".25" autoplay></audio> -->
-    <a-scene webxr="referenceSpaceType: local" environment cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable" info-message="htmlSrc: #messageText">
+    <a-scene webxr="referenceSpaceType: local" environment cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
       <img>
-        <a-asset-item id="messageText" src="templates/information.html"></a-asset-item>
+        <img id="telestialFlare" src="images/materials/flare.jpg">
+        <img id="terrestrialFlare" src="images/materials/flare2.jpg">
+        <img id="celestialFlare" src="images/materials/flare3.jpg">
+        <audio id="kingsfold" src="audio/kingsfold.mp3" preload="auto"></audio>
         <img id="c1" src="images/creation/new_zealand_landscape.jpeg">
         <img id="c2" src="images/creation/otters_lisbon.jpeg">
         <img id="c3" src="images/creation/sunrise_japan.jpeg">
@@ -31,9 +33,6 @@
         <img id="earth" src="images/materials/planet_earth.jpg">
         <img id="atonementImage" src="images/atonement/jesus_praying_in_gethsemane.jpeg">
         <img id="resurrectionImage" src="images/resurrection/the_second_coming.jpeg">
-        <img id="telestialFlare" src="images/materials/flare.jpg">
-        <img id="terrestrialFlare" src="images/materials/flare2.jpg">
-        <img id="celestialFlare" src="images/materials/flare3.jpg">
         <img id="terrestrialMaterial" src="images/kingdoms/Moon_LRO_LOLA_global_LDEM_1024.jpg">
         <img id="celestialMaterial" src="images/kingdoms/SunTex.jpg">
         <img id="telestialIcon" src="images/kingdoms/star-256.png">
@@ -51,7 +50,8 @@
       <a-entity id="light" light="type: ambient; color: #888"></a-entity>
 
       <a-entity id="CameraRig" wasd-controls="acceleration:20" position="0 1.6 0">
-        <a-entity id="Camera" camera look-controls></a-entity>
+        <a-entity id="Camera" camera look-controls><a-cursor id="GazeCursor" visible="false"></a-cursor></a-entity>
+        <a-entity id="Music" sound="src: #kingsfold; loop: true;"></a-entity>
 
         <a-entity id="left-hand" teleport-controls="cameraRig: #CameraRig; teleportOrigin: #Camera;"></a-entity>
         <a-entity id="right-hand" teleport-controls="cameraRig: #CameraRig; teleportOrigin: #Camera;"></a-entity>
@@ -65,17 +65,24 @@
 
       <!-- the introduction and navigation -->
       <a-entity id="Beginning">
-        <a-box id="TitlePanel" position="0 1.35 -2.025" height=".75" width="2" scale="1 1 .05" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-box id="TitlePanel" position="0 1.35 -2.025" height=".75" width="2.1" scale="1 1 .05" material="shader: flat; color: #222; metalness: .25;"></a-box>
 
-        <a-entity id="WelcomeText" position=".45 1.45 -2" 
+        <a-entity id="WelcomeText" position="0 1.45 -2" 
           text="width: 2.5; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
-          value: Welcome to Project Salvation.">
+          align: center; value: Welcome to Project Salvation.">
         </a-entity>
-        <a-entity id="IntroductionText" position=".075 2.5 -2"
+        <a-entity id="IntroductionText" position="0 1.9 -2"
           text="width: 2; color: white; transparent: true; opacity: 0;
           shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-Regular.json;
-          value: This is an interactive experience based on the plan of salvation. It is NOT affiliated with the Church of Jesus Christ of Latter-Day Saints.">
-            <a-image id="NextOne" src="#arrow" position=".2 -.2 0" scale=".2 .2" 
+          align: center; value: This is an interactive experience based on the doctrine of the plan of salvation as taught by The Church of Jesus Christ of Latter-day Saints. The purpose of this plan is to answer some of life's questions like, what is my purpose? and what happens after we die? There is plenty we don't know, which is why faith is core to any belief, but learning is the first step.
+          
+          &quot;Begin to learn, with humility and patience, the lessons that are set for your ultimate perfection.&quot; - James Allen
+          
+          Controls: Use a Mouse, Touch, Gaze Pointer, Controller Raycast for panning and selection.
+
+          Disclaimer: This was created as a fun side project using A-Frame and is NOT an official or affiliated site of the Church of Jesus Christ of Latter-day Saints."
+          >
+            <a-image id="NextOne" src="#arrow" position=".85 -1 0.025" scale=".2 .2"
               transparent="true" opacity=".65" visible="false" next-one
               animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
               animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
@@ -96,24 +103,24 @@
       </a-entity>
 
       <!-- the pre-existence -->
-      <a-entity id="PreExistence" visible="true" position="10 1.35 -2">
-        <a-box position="1.5 .25 -.5" scale="2 1.3 0" rotation="0 -15 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
-        <a-entity id="PreExistText" position="1.5 .7 -.475" rotation="0 -15 0"
+      <a-entity id="PreExistence" visible="false" position="10 1.35 -2">
+        <a-box position="1.5 .25 -.5" scale="2 1 0" rotation="0 -15 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
+        <a-entity id="PreExistText" position="1.5 .55 -.475" rotation="0 -15 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
         align: center; value: Premortal Life">
-          <a-entity id="PreExistSummary" position="0 -.45 0"
+          <a-entity id="PreExistSummary" position="0 -.35 0"
             text="width: 1.9; wrapCount: 55; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
-            align: center; value: Before we came to Earth we lived with God. He is the father of our spirits. We are his children and He loves us. He wants us to become like Him. His whole purpose is to enable us to enjoy all of His blessings. In order to do so, He created this plan and gave us the ability to freely choose our own path on Earth. He sent his son Jesus Christ to be an example and a guide for us and if we do our best to do what is right, we can return to be with Him.
+            align: center; value: Before we came to Earth we lived with God. He is the father of our spirits. We are his children and He loves us. He wants us to become like Him. His whole purpose is to enable us to enjoy all of His blessings. In order to do so, He created this plan and gave us the ability to freely choose our own path on Earth. He prepared his son Jesus Christ to be an example and a guide for us so we can return to be with Him.
             (Ref. Jeremiah 1:5, Hebrews 12:9)">
           </a-entity>
-          <a-image id="NextOne" src="#arrow" position=".8 -.95 0" scale=".2 .2" 
+          <a-image id="NextOne" src="#arrow" position=".8 -.65 0" scale=".2 .2" 
             transparent="true" opacity=".65" next-one
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
             animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
             animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
             animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
           </a-image>
-          <a-image id="PrevOne" src="#arrow" position="-.825 -.95 0" scale=".2 .2" rotation="0 180"
+          <a-image id="PrevOne" src="#arrow" position="-.825 -.65 0" scale=".2 .2" rotation="0 180"
             transparent="true" opacity=".65" prev-one
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
             animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
@@ -133,7 +140,7 @@
       </a-entity>
 
       <!-- the creation & fall -->
-      <a-entity id="CreationFall" visible="false" position="20 1.35 -2">
+      <a-entity id="CreationFall" visible="false" position="20 1 -2">
         <a-box position="0 -.25 -.025" scale="2 .85 .05" rotation="-25 0 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
         <a-entity id="CreationText" position="0 0 -.1" rotation="-25 0 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
@@ -239,7 +246,7 @@
         <a-box id="PictureFrame" position="-1.525 -.5 -1.025" rotation="0 -85 0" scale=".05 2.2 2.2" 
         material="src:#wood; roughness: 1; normalMap:#woodNormal; metalness: 0;"></a-box>
 
-        <a-video id="christVideo" src="#BecauseOfHim" position="0 2 -1" width="4" height="2.25" rotation="10 0 0">
+        <a-video id="christVideo" src="#BecauseOfHim" position="0 2 -1" width="4" height="2.25" rotation="10 0 0" video-end>
           <a-image id="PlayControl" src="#play" position="0 -1.45 .025" scale=".5 .5" play-control></a-image>
           <a-image id="PauseControl" src="#pause" position="0 -1.45 .025" scale="0 0" pause-control></a-image>
         </a-video>
@@ -324,7 +331,7 @@
       </a-entity>
 
       <!-- the kingdoms of glory -->
-      <a-entity id="Kingdoms" visible="false" position="70 1.35 -2">
+      <a-entity id="Kingdoms" visible="true" position="70 1.35 -2">
         <a-box position="0 -.25 -.025" scale="2 1.5 .05" rotation="-25 0 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
         <a-entity id="KingdomsText" position="0 .25 -.2" rotation="-25 0 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
@@ -415,5 +422,7 @@
         <a-entity position="0 0 -.01" geometry="primitive: circle; radius: .35" material="color:#FFF; shader: flat;"></a-entity>
       </a-entity>
     </a-scene>
+
+    <script src="js/device_config.js"></script>
   </body>
 </html>
