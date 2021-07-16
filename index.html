@@ -2,7 +2,6 @@
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-cubemap-component@2.1.1/dist/aframe-cubemap-component.min.js"></script>
-    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     
     <script src="https://unpkg.com/aframe-lensflare-component/dist/aframe-lensflare-component.min.js"></script>
     <!-- embedded scripts -->
@@ -53,15 +52,14 @@
         <a-entity id="Camera" camera look-controls><a-cursor id="GazeCursor" visible="false"></a-cursor></a-entity>
         <a-entity id="Music" sound="src: #kingsfold; loop: true;"></a-entity>
 
-        <a-entity id="left-hand" teleport-controls="cameraRig: #CameraRig; teleportOrigin: #Camera;"></a-entity>
-        <a-entity id="right-hand" teleport-controls="cameraRig: #CameraRig; teleportOrigin: #Camera;"></a-entity>
+        <a-entity id="left-hand" laser-controls="hand: left" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
+        <a-entity id="right-hand" laser-controls="hand: right" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
+        <a-entity id="MouseCursor" cursor="rayOrigin: mouse" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
         
         <a-torus arc="360" radius=".25" radius-tubular="0.01" rotation="105 0 0" position="0 -1.6 0"
         material="color: #FFF107; emissive: #FFF; emissiveIntensity: .5;"
         ></a-torus>
       </a-entity>  
-
-      <a-entity id="MouseCursor" cursor="rayOrigin: mouse" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink"></a-entity>
 
       <!-- the introduction and navigation -->
       <a-entity id="Beginning">
@@ -78,7 +76,7 @@
           
           &quot;Begin to learn, with humility and patience, the lessons that are set for your ultimate perfection.&quot; - James Allen
           
-          Controls: Use a Mouse, Touch, Gaze Pointer, Controller Raycast for panning and selection.
+          Controls: Use Mouse, Touch, Gaze Click or Controller for panning and selection.
 
           Disclaimer: This was created as a fun side project using A-Frame and is NOT an official or affiliated site of the Church of Jesus Christ of Latter-day Saints."
           >
@@ -132,7 +130,7 @@
         <a-entity position="0 1.65 0" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#PreSpirit"></a-entity>
         <a-entity position="0 -.5 0" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#PreSpirit"></a-entity>
         <a-sphere material="src:#cloud; transparent:true; opacity:0.15; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
-        radius=".98" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:30000;"></a-sphere>
+        radius=".98" position="-1 .15 -1" animation="property: rotation; to: 360 0; easing:linear; loop: true; dur:30000;"></a-sphere>
         <a-sphere id="PreSpirit" material="src:#cloud; transparent:true; opacity:0.25; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
         radius="1" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:25000;"></a-sphere>
 
@@ -282,7 +280,9 @@
         <a-entity position="-3 3 -.15" light="type: spot; color: #2471a3; intensity: 15.0; penumbra: 1; distance: 25; decay: 5; target:#SpiritWorld"></a-entity>
         <a-entity position="3 -5 -1" light="type: spot; color: #a93226; intensity: 7.0; penumbra: 1; distance: 25; target:#SpiritWorld"></a-entity>
         <a-sphere material="src:#cloud; transparent:true; opacity:0.15; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
-        radius=".98" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:30000;"></a-sphere>
+        radius=".98" position="-1 .15 -1" animation="property: rotation; to: 360 0; easing:linear; loop: true; dur:30000;"></a-sphere>
+        <a-sphere material="src:#cloud; transparent:true; opacity:0.25; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
+        radius=".99" position="-1 .15 -1" animation="property: rotation; to: 360 360; easing:linear; loop: true; dur:25000;"></a-sphere>
         <a-sphere id="SpiritWorld" material="src:#cloud; transparent:true; opacity:0.25; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
         radius="1" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:25000;"></a-sphere>
 
@@ -331,7 +331,7 @@
       </a-entity>
 
       <!-- the kingdoms of glory -->
-      <a-entity id="Kingdoms" visible="true" position="70 1.35 -2">
+      <a-entity id="Kingdoms" visible="false" position="70 1.35 -2">
         <a-box position="0 -.25 -.025" scale="2 1.5 .05" rotation="-25 0 0" material="shader: flat; color: #222; metalness: .25;"></a-box>
         <a-entity id="KingdomsText" position="0 .25 -.2" rotation="-25 0 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
