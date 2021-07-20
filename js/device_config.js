@@ -21,7 +21,8 @@ document.querySelector('a-scene').addEventListener('enter-vr', function () {
     }
     if (hasTouchScreen)
     {
-        document.getElementById("GazeCursor").setAttribute("visible","true");
+        var gazeCursor = document.createElement('a-cursor');
+        document.getElementById('Camera').appendChild(gazeCursor);
     }
   });
 
@@ -48,6 +49,7 @@ document.querySelector('a-scene').addEventListener('enter-vr', function () {
     }
     if (hasTouchScreen)
     {
-        document.getElementById("GazeCursor").setAttribute("visible","false");
+        var gazeCursor = document.querySelector('a-cursor')
+        document.getElementById('Camera').removeChild(gazeCursor);
     }
   });
