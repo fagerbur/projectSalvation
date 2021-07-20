@@ -116,7 +116,9 @@ AFRAME.registerComponent("pause-control", {
         this.el.addEventListener("click", function(e) { 
             var christVideo = document.getElementById("BecauseOfHim");
             var videoControl = document.getElementById("PlayControl");
-            document.getElementById("Music").components.sound.playSound();
+            setTimeout(function () {
+                document.getElementById("Music").components.sound.playSound();
+            }, 3000);
 
             christVideo.pause();
             videoControl.setAttribute("scale",".5 .5");
@@ -128,7 +130,9 @@ AFRAME.registerComponent("pause-control", {
 AFRAME.registerComponent("video-end", {
     init: function() {
         document.getElementById("BecauseOfHim").addEventListener("ended", (e) => {
-            document.getElementById("Music").components.sound.playSound();
+            setTimeout(function () {
+                document.getElementById("Music").components.sound.playSound();
+            }, 3000);
             document.getElementById("PlayControl").setAttribute("scale",".5 .5");
             document.getElementById("PauseControl").setAttribute("scale","0 0");
         });
