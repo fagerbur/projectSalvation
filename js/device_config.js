@@ -19,11 +19,12 @@ document.querySelector('a-scene').addEventListener('enter-vr', function () {
             );
         }
     }
-    //TODO: Hide the VR button on mobile anything except chrome
-    //no gyro in brave, no up and down in brave
-    //no click in cardboard vr
     if (hasTouchScreen)
     {
+        if(window.navigator.userAgent.includes("Mozilla"))
+        {
+            document.getElementById('Scene').setAttribute("vr-mode-ui","enabled: false");
+        }
         var gazeCursor = document.createElement('a-cursor');
         document.getElementById('Camera').appendChild(gazeCursor);
     }
