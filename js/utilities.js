@@ -23,8 +23,7 @@ AFRAME.registerComponent('next-one', {
   init:function() {
     this.el.addEventListener('click', function (evt) {
         var camera = document.getElementById("CameraRig")
-        var x = camera.getAttribute("position").x + 10
-        camera.setAttribute("animation","property: position; to: "+ x +" 1.6 0; dur: 5000; easing: easeInOutQuad; delay:1000; autoplay: true;")
+        var x = Math.trunc(camera.getAttribute("position").x) + 10
         updatePositionVisibility(x);
     });
   }
@@ -34,8 +33,7 @@ AFRAME.registerComponent('prev-one', {
     init:function() {
       this.el.addEventListener('click', function (evt) {
           var camera = document.getElementById("CameraRig")
-          var x = camera.getAttribute("position").x - 10
-          camera.setAttribute("animation","property: position; to: "+ x +" 1.6 0; dur: 5000; easing: easeInOutQuad; delay:1000; autoplay: true;")
+          var x = Math.trunc(camera.getAttribute("position").x) - 10
           updatePositionVisibility(x);
       });
     }
@@ -43,7 +41,8 @@ AFRAME.registerComponent('prev-one', {
 
 function updatePositionVisibility(position)
 {
-    console.log(position);
+    var camera = document.getElementById("CameraRig")
+
     if(position === 0)
     {
         document.getElementById("Beginning").setAttribute("animation","property: visible; to:true; delay:1000; autoplay:true;")
@@ -96,6 +95,8 @@ function updatePositionVisibility(position)
         document.getElementById("Kingdoms").setAttribute("animation","property: visible; to:false; delay:4000; autoplay:true;")
         document.getElementById("Conclusion").setAttribute("animation","property: visible; to:true; delay:1000; autoplay:true;")
     }
+
+    camera.setAttribute("animation","property: position; to: "+ position +" 1.6 0; dur: 5000; easing: easeInOutQuad; delay:1000; autoplay: true;")
 };
 
 AFRAME.registerComponent("play-control", {
