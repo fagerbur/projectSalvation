@@ -1,12 +1,16 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/webvr-polyfill@latest/build/webvr-polyfill.js'></script>
     <script src="https://unpkg.com/aframe-cubemap-component@2.1.1/dist/aframe-cubemap-component.min.js"></script>
     <script src="https://morandd.github.io/aframe-multitouch-look-controls/multitouch-look-controls.js"></script>
     <script src="https://unpkg.com/aframe-lensflare-component/dist/aframe-lensflare-component.min.js"></script>
     <!-- embedded scripts -->
     <script src="js/rounded.js"></script>
     <script src="js/utilities.js"></script>
+    <script>
+      window.webvrpolyfill = new WebVRPolyfill(this.polyfillConfig);
+    </script>
   </head>
   <body>
     <a-scene id="Scene" vr-mode-ui="enabled: true" webxr="referenceSpaceType: local" environment cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
