@@ -43,6 +43,7 @@ AFRAME.registerComponent('prev-one', {
 
 function updatePositionVisibility(position)
 {
+    console.log(position);
     if(position === 0)
     {
         document.getElementById("Beginning").setAttribute("animation","property: visible; to:true; delay:1000; autoplay:true;")
