@@ -24,7 +24,10 @@ AFRAME.registerComponent('next-one', {
     this.el.addEventListener('click', function (evt) {
         var camera = document.getElementById("CameraRig")
         var x = Math.trunc(camera.getAttribute("position").x) + 10
-        updatePositionVisibility(x);
+        if(x % 10 == 0)
+        {
+          updatePositionVisibility(x);
+        }
     });
   }
 });
@@ -34,7 +37,10 @@ AFRAME.registerComponent('prev-one', {
       this.el.addEventListener('click', function (evt) {
           var camera = document.getElementById("CameraRig")
           var x = Math.trunc(camera.getAttribute("position").x) - 10
-          updatePositionVisibility(x);
+          if(x % 10 == 0)
+          {
+            updatePositionVisibility(x);
+          }
       });
     }
   });
