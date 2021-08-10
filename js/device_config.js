@@ -23,6 +23,8 @@ function isMobile() {
     return hasTouchScreen;
 }
 
+console.log('001')
+
 if(navigator.userAgent.includes("Firefox"))
 {
     var mobileCheck = isMobile();
