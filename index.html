@@ -12,8 +12,8 @@
     <a-scene id="Scene" vr-mode-ui="enabled: true" webxr="referenceSpaceType: local" environment cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
       <img>
         <img id="telestialFlare" src="images/materials/flare.jpg">
-        <img id="terrestrialFlare" src="images/materials/flare2.jpg">
-        <img id="celestialFlare" src="images/materials/flare3.jpg">
+        <!-- <img id="terrestrialFlare" src="images/materials/flare2.jpg">
+        <img id="celestialFlare" src="images/materials/flare3.jpg"> -->
         <audio id="kingsfold" src="audio/kingsfold.mp3" preload="auto"></audio>
         <img id="c1" src="images/creation/new_zealand_landscape.jpeg">
         <img id="c2" src="images/creation/otters_lisbon.jpeg">
@@ -42,7 +42,7 @@
         <img id="play" src="images/atonement/play-256.png">
         <img id="pause" src="images/atonement/pause-256.png">
         <img id="christus" src="images/christus_statue_visitors_center.jpeg">
-        <video id="BecauseOfHim" preload="auto" src="video/2014-00-1420-because-of-him-720p-eng.webm" width="160" height="90" crossOrigin="anonymous" playsinline="" webkit-playsinline=""></video>
+        <video id="BecauseOfHim" preload="auto" src="video/2014-00-1420-because-of-him-720p-eng.mp4" width="160" height="90" crossOrigin="anonymous" playsinline="" webkit-playsinline=""></video>
       </a-assets>
       <!-- the firmament -->
       <a-entity id="background" cubemap="folder: images/firmament/"></a-entity>
@@ -52,7 +52,7 @@
         <a-entity id="Camera" camera look-controls="enabled: true; mouseEnabled:true; hmdEnabled: true; magicWindowTrackingEnabled: true;"
         multitouch-look-controls></a-entity>
         
-        <a-entity id="Music" sound="src: #kingsfold; loop: true;"></a-entity>
+        <a-entity id="Music" sound="src: #kingsfold; loop: true; position: false; volume: .5;"></a-entity>
 
         <a-entity id="left-hand" visible="false" laser-controls="hand: left" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
         <a-entity id="right-hand" visible="false" laser-controls="hand: right" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
@@ -364,7 +364,7 @@
             animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
             animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
           </a-image>
-          <a-image id="ter" src="#terrestrialIcon" position="0 -.95 0" scale=".175 .175" 
+          <!-- <a-image id="ter" src="#terrestrialIcon" position="0 -.95 0" scale=".175 .175" 
             transparent="true" opacity=".65" light-terrestrial
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
             animation__scale="property: scale; to: .215 .215; startEvents: mouseenter; dur: 200"
@@ -377,7 +377,7 @@
             animation__scale="property: scale; to: .225 .225; startEvents: mouseenter; dur: 200"
             animation__unhighlight="property: material.opacity; to: .65; startEvents: mouseleave; dur: 200"
             animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
-          </a-image>
+          </a-image> -->
           <a-image id="undo" src="#undoIcon" position="0 -1.15 0" scale=".075 .075" 
             transparent="true" opacity=".65" undo-kingdom-lights
             animation__highlight="property: material.opacity; to: 1; startEvents: mouseenter; dur: 200"
