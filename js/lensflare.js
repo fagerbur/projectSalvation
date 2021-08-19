@@ -89,6 +89,7 @@
       },
       init: function () {
         let self = this;
+        console.log(this.data.src);
         var e = document.querySelector("a-scene").object3D,
           t = this.el.object3D,
           i = this.el.sceneEl.object3D,
