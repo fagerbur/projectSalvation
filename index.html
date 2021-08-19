@@ -1,15 +1,5 @@
 <html>
   <head>
-    <script>
-      // window.addEventListener('error', function(event) {
-      //   console.log(event);
-      //   if(event.message.includes('script'))
-      //   {
-      //     console.log(event.message);
-      //     location.reload();
-      //   }
-      // });
-    </script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-cubemap-component@2.1.1/dist/aframe-cubemap-component.min.js"></script>
     <script src="https://morandd.github.io/aframe-multitouch-look-controls/multitouch-look-controls.js"></script>
@@ -21,9 +11,9 @@
   <body>
     <a-scene id="Scene" vr-mode-ui="enabled: true" webxr="referenceSpaceType: local" environment cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
       <img>
-        <img id="telestialFlare" src="./images/materials/flare.jpg" crossorigin="anonymous">
-        <img id="terrestrialFlare" src="./images/materials/flare2.jpg" crossorigin = "anonymous">
-        <img id="celestialFlare" src="./images/materials/flare3.jpg" crossorigin = "anonymous">
+        <img id="telestialFlare" src="/images/materials/flare.jpg" crossorigin="anonymous">
+        <img id="terrestrialFlare" src="/images/materials/flare2.jpg" crossorigin = "anonymous">
+        <img id="celestialFlare" src="/images/materials/flare3.jpg" crossorigin = "anonymous">
         <audio id="kingsfold" src="audio/kingsfold.mp3" preload="auto"></audio>
         <img id="c1" src="images/creation/new_zealand_landscape.jpeg">
         <img id="c2" src="images/creation/otters_lisbon.jpeg">
