@@ -89,7 +89,6 @@
       },
       init: function () {
         let self = this;
-        console.log(this.data.src);
         var e = document.querySelector("a-scene").object3D,
           t = this.el.object3D,
           i = this.el.sceneEl.object3D,
@@ -392,6 +391,3 @@
     })());
   }
 ]);
-//# sourceMappingURL=aframe-lensflare-component.min.js.map
-
-//# sourceMappingURL=aframe-lensflare-component.min.js.map
