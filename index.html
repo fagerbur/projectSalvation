@@ -4,13 +4,18 @@
     <script src="https://unpkg.com/aframe-cubemap-component@2.1.1/dist/aframe-cubemap-component.min.js"></script>
     <!-- embedded scripts -->
     <script src="js/multitouch.js"></script>
-    <script src="js/lensflare.js"></script>
     <script src="js/rounded.js"></script>
     <script src="js/utilities.js"></script>
+    <script src="js/lensflare.js"></script>
   </head>
   <body>
     <a-scene id="Scene" vr-mode-ui="enabled: true" webxr="referenceSpaceType: local" environment cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable">
       <img>
+        <!-- For localhost
+        <img id="telestialFlare" src="/images/materials/flare.jpg" crossorigin="anonymous">
+        <img id="terrestrialFlare" src="/images/materials/flare2.jpg" crossorigin = "anonymous">
+        <img id="celestialFlare" src="/images/materials/flare3.jpg" crossorigin = "anonymous"> -->
+        
         <img id="telestialFlare" src="../projectSalvation/images/materials/flare.jpg" crossorigin="anonymous">
         <img id="terrestrialFlare" src="../projectSalvation/images/materials/flare2.jpg" crossorigin = "anonymous">
         <img id="celestialFlare" src="../projectSalvation/images/materials/flare3.jpg" crossorigin = "anonymous">
