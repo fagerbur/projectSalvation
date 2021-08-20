@@ -89,34 +89,38 @@
       },
       init: function () {
         let self = this;
-        var e = document.querySelector("a-scene").object3D,
-          t = this.el.object3D,
-          i = this.el.sceneEl.object3D,
-          r = this.data.relative
-            ? new THREE.Vector3(0, 0, 0)
-            : this.data.position,
-          n = new THREE.TextureLoader(),
-          a = n.load(this.data.src.currentSrc, function (e) {
-              if (((self.lensFlare = new THREE.Lensflare()), 
+        var manager = new THREE.LoadingManager();
+          manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+            console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+          };
+          manager.onLoad = function ( ) {
+            console.log( 'Loading complete!');
+            if (((self.lensFlare = new THREE.Lensflare()), 
               (self.lensFlareElement = new THREE.LensflareElement(a, self.data.size, 0, new THREE.Color(self.data.lightColor))), 
               self.lensFlare.addElement(self.lensFlareElement), self.lensFlare.position.copy(r), self.data.createLight)) 
               {
                 var o = self.setLightType(self.data.lightType.toLowerCase(), self.data),
                   l = !!self.data.target && self.data.target;
-                l && ((o.target = document.querySelector(self.data.target).object3D), i.add(o.target), i.updateMatrixWorld()),
+                l && ((o.target = document.querySelector(self.data.target).object3D), 
+                i.add(o.target), 
+                i.updateMatrixWorld()),
                 o.position.set(r.x, r.y, r.z),
-                self.data.relative
-                  ? (o.add(self.lensFlare), t.add(o), i.updateMatrixWorld())
-                  : e.add(o);
+                self.data.relative ? (o.add(self.lensFlare), t.add(o), i.updateMatrixWorld()) : e.add(o);
               } else 
               {
                 self.data.relative ? (t.add(self.lensFlare), i.updateMatrixWorld()) : e.add(self.lensFlare);
               }
             return e;
-          }, undefined, 
-          function (e) {
-            throw new Error("An error occured loading the Flare texture");
-          });
+          };
+          manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+            console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+          };
+        var e = document.querySelector("a-scene").object3D,
+          t = this.el.object3D,
+          i = this.el.sceneEl.object3D,
+          r = this.data.relative ? new THREE.Vector3(0, 0, 0) : this.data.position,
+          n = new THREE.TextureLoader(manager),
+          a = n.load(this.data.src.currentSrc)
         }
       ,
       update: function (e) {},
