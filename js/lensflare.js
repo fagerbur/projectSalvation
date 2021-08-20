@@ -18,7 +18,6 @@
   t(0);
 })([
   function (e, t, i) {
-    "use strict";
     if ("undefined" == typeof AFRAME) 
       throw new Error("Component attempted to register before AFRAME was available.");
     if ("undefined" == typeof THREE) 
@@ -120,7 +119,7 @@
           i = this.el.sceneEl.object3D,
           r = this.data.relative ? new THREE.Vector3(0, 0, 0) : this.data.position,
           n = new THREE.TextureLoader(manager),
-          a = n.load(this.data.src.currentSrc)
+          a = n.load(this.data.src.src)
         }
       ,
       update: function (e) {},

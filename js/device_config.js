@@ -1,6 +1,3 @@
-//no idea why we have to do this...
-location.reload();
-
 function isMobile() {
     var hasTouchScreen = false;
     if ("maxTouchPoints" in navigator) {
