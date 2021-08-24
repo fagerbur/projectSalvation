@@ -59,8 +59,8 @@
         
         <a-entity id="Music" sound="src: #kingsfold; loop: true; position: false; volume: .5;"></a-entity>
 
-        <a-entity id="left-hand" visible="true" laser-controls="hand: left" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
-        <a-entity id="right-hand" visible="true" laser-controls="hand: right" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
+        <a-entity id="left-hand" visible="false" laser-controls="hand: left" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
+        <a-entity id="right-hand" visible="false" laser-controls="hand: right" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
         <a-entity id="MouseCursor" cursor="rayOrigin: mouse" line="visible:false;" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
         
         <a-torus arc="360" radius=".25" radius-tubular="0.01" rotation="105 0 0" position="0 -1.6 0"
@@ -228,7 +228,7 @@
         align: center; value: The Atonement">
           <a-entity id="AtonementSummary" position="0 -.5 0"
             text="width: 1.9; wrapCount: 55; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
-            align: center; value: The Atonement of Jesus Christ made this entire plan possible. He was chosen before the creation of the world to redeem us. Christ suffered and paid the price for our sins in the Garden of Gethsemane as well as on the cross at Calvary. His death and resurrection enable all of us to one day be resurrected. In spite of challenges and difficulties in life, we can find peace and hope in Christ. Because we are imperfect, we could not return to God’s presence without Christ’s sacrifice. We can all become clean again through the Atonement of Jesus Christ if we have faith in Him, repent, are baptized, receive the Holy Ghost and live His Gospel to the best of our ability throughout our lives.
+            align: center; value: The Atonement of Jesus Christ made this entire plan possible. He was chosen before the creation of the world to redeem us. Christ suffered and paid the price for our sins in the Garden of Gethsemane as well as on the cross at Calvary. His death and resurrection enable all of us to one day be resurrected. In spite of challenges and difficulties in life, we can find peace and hope in Christ. Because we are imperfect, we could not return to God's presence without Christ's sacrifice. We can all become clean again through the Atonement of Jesus Christ if we have faith in Him, repent, are baptized, receive the Holy Ghost and live His Gospel to the best of our ability throughout our lives.
             (Ref. John 3:16-17, 2 Nephi 2:6-8)">
           </a-entity>
           <a-image id="NextOne" src="#arrow" position=".8 -.95 0" scale=".2 .2" 
