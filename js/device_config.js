@@ -25,7 +25,7 @@ function isMobile() {
 
 if(navigator.userAgent.includes("Firefox"))
 {
-    var mobileCheck = isMobile();
+    var mobileCheck = AFRAME.utils.device.isMobile();
     if(mobileCheck)
     {
         document.getElementById('Scene').setAttribute("vr-mode-ui","enabled: false");
@@ -33,21 +33,31 @@ if(navigator.userAgent.includes("Firefox"))
 }
 
 document.querySelector('a-scene').addEventListener('enter-vr', function () {
-    var mobileCheck = isMobile();
+    var mobileCheck = AFRAME.utils.device.isMobile();
 
     if (mobileCheck)
     {
         var gazeCursor = document.createElement('a-cursor');
         document.getElementById('Camera').appendChild(gazeCursor);
     }
+
+    var headsetCheck = AFRAME.utils.device.checkHeadsetConnected();
+    if(headsetCheck)
+    {
+        document.getElementById('left-hand').object3D.visible = true;
+        document.getElementById('right-hand').object3D.visible = true;
+    }
 });
 
 document.querySelector('a-scene').addEventListener('exit-vr', function () {
-    var mobileCheck = isMobile();
+    var mobileCheck = AFRAME.utils.device.isMobile();
 
     if (mobileCheck)
     {
         var gazeCursor = document.querySelector('a-cursor')
         document.getElementById('Camera').removeChild(gazeCursor);
     }
+
+    document.getElementById('left-hand').object3D.visible = true;
+    document.getElementById('right-hand').object3D.visible = true;
 });
