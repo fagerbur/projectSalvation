@@ -12,15 +12,20 @@ document.querySelector('a-scene').addEventListener('enter-vr', function () {
     var headsetCheck = AFRAME.utils.device.checkHeadsetConnected();
     var mobileCheck = AFRAME.utils.device.isMobile();
 
-    if(headsetCheck)
-    {
-        document.getElementById('left-hand').object3D.visible = true;
-        document.getElementById('right-hand').object3D.visible = true;
-    }
-    else if (mobileCheck)
+    if (mobileCheck && headsetCheck)
     {
         var gazeCursor = document.createElement('a-cursor');
         document.getElementById('Camera').appendChild(gazeCursor);
+    }
+    else if(mobileCheck)
+    {
+        var gazeCursor = document.createElement('a-cursor');
+        document.getElementById('Camera').appendChild(gazeCursor);
+    }
+    else if(headsetCheck)
+    {
+        document.getElementById('left-hand').object3D.visible = true;
+        document.getElementById('right-hand').object3D.visible = true;
     }
 });
 
