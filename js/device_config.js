@@ -15,13 +15,13 @@ document.querySelector('a-scene').addEventListener('enter-vr', function () {
     if (mobileCheck && headsetCheck)
     {
         var gazeCursor = document.createElement('a-cursor');
-        gazeCursor.setAttribute("raycaster","objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100;")
+        gazeCursor.setAttribute("raycaster","objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineOpacity: 0;")
         document.getElementById('Camera').appendChild(gazeCursor);
     }
     else if(mobileCheck)
     {
         var gazeCursor = document.createElement('a-cursor');
-        gazeCursor.setAttribute("raycaster","objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100;")
+        gazeCursor.setAttribute("raycaster","objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineOpacity: 0;")
         document.getElementById('Camera').appendChild(gazeCursor);
     }
     else if(headsetCheck)
