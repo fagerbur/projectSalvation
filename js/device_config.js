@@ -18,16 +18,16 @@ document.querySelector('a-scene').addEventListener('enter-vr', function () {
         gazeCursor.setAttribute("raycaster","objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink;")
         document.getElementById('Camera').appendChild(gazeCursor);
     }
+    else if(headsetCheck)
+    {
+        document.getElementById('left-hand').object3D.visible = true;
+        document.getElementById('right-hand').object3D.visible = true;
+    }
     else if(!mobileCheck)
     {
         var gazeCursor = document.createElement('a-cursor');
         gazeCursor.setAttribute("raycaster","objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink;")
         document.getElementById('Camera').appendChild(gazeCursor);
-    }
-    else if(headsetCheck)
-    {
-        document.getElementById('left-hand').object3D.visible = true;
-        document.getElementById('right-hand').object3D.visible = true;
     }
 });
 
