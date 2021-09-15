@@ -47,6 +47,7 @@
         <img id="arrow" src="images/navigation/arrow-256.png">
         <img id="play" src="images/atonement/play-256.png">
         <img id="pause" src="images/atonement/pause-256.png">
+        <img id="fullPlan" src="images/000_preach-my-gospel_1207575_prt.png">
         <img id="christus" src="images/christus_statue_visitors_center.jpeg">
       </a-assets>
       <!-- the firmament -->
@@ -57,7 +58,7 @@
         <a-entity id="Camera" camera look-controls="enabled: true; mouseEnabled:true; hmdEnabled: true; magicWindowTrackingEnabled: true;"
         multitouch-look-controls></a-entity>
         
-        <a-entity id="Music" sound="src: #kingsfold; loop: true; position: false; volume: .5;"></a-entity>
+        <a-entity id="Music" sound="src: #kingsfold; loop: true; positional: false; volume: .5;"></a-entity>
 
         <a-entity id="left-hand" visible="false" laser-controls="hand: left" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
         <a-entity id="right-hand" visible="false" laser-controls="hand: right" raycaster="objects: #Start, #NextOne, #PrevOne, #PlayControl, #PauseControl, #TombStone, #tel, #ter, #cel, #undo, #christLink; showLine: true; far: 100; lineColor: green; lineOpacity: 1"></a-entity>
@@ -215,9 +216,9 @@
         <a-entity position="0 1.65 0" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#Earth"></a-entity>
         <a-entity position="0 -.5 1" light="type: spot; color: #555; intensity: 6.0; penumbra: 0.5; distance: 8; target:#Earth"></a-entity>
         <a-sphere material="src:#earth; roughness: 1; emissive: orange; emissiveIntensity: .00;" 
-        radius=".98" position="-1 .15 -1" rotation="0 0 23.5" animation="property: rotation; to:0 360 23.5; easing:linear; loop: true; dur:30000;"></a-sphere>
+        radius=".98" position="-1 .15 -1" rotation="0 0 23.5" animation="property: rotation; to:0 -360 23.5; easing:linear; loop: true; dur:30000;"></a-sphere>
         <a-sphere id="Earth" material="src:#cloud; transparent:true; opacity:0.25; emissive: #000; emissiveIntensity: .5; roughness: 1;" 
-        radius="1" position="-1 .15 -1" animation="property: rotation; to: 0 360; easing:linear; loop: true; dur:25000;"></a-sphere>
+        radius="1" position="-1 .15 -1" animation="property: rotation; to: 0 -360; easing:linear; loop: true; dur:25000;"></a-sphere>
       </a-entity>
 
       <!-- the atonement -->
@@ -403,7 +404,7 @@
       </a-entity>
 
       <!-- the conclusion -->
-      <a-entity id="Conclusion" visible="false" position="80 1.35 -2">
+      <a-entity id="Conclusion" visible="false" position="80 1 -2">
         <a-box position="0 0 -.025" scale="2 1.25 .05" material="shader: flat; color: #222; metalness: .25;"></a-box>
         <a-entity id="ConclusionText" position="0 .4 0"
         text="width: 2; color: white; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
@@ -422,6 +423,13 @@
               animation__unscale="property: scale; to: .2 .2; startEvents: mouseleave; dur: 200">
             </a-image>
         </a-entity>
+        <a-entity id="planText" position="-.55 1.9 .05"
+        text="width: 4; color: #2B2D2F; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-SemiBold.json; 
+        align: center; value: The Plan of Salvation">
+        </a-entity>
+        <a-image id="planImage" src="#fullPlan" position="0 1.5 .05" scale="3 1.25" rotation="0 0 0"></a-image>
+        <a-box id="PictureFrame" position="0 1.496 -.025" rotation="90 90 0" scale=".05 3.25 1.45" 
+        material="src:#wood; roughness: 1; normalMap:#woodNormal; metalness: 0;"></a-box>
         <a-entity id="christLink" position="1.5 0 0" geometry="primitive: circle; radius: .33" material="src:#christus; shader: flat;" 
           onclick="window.open('https://www.churchofjesuschrist.org/comeuntochrist')" text="width: .6; color: white; wrapCount: 19.25; align: center;
           shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-Regular.json;

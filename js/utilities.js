@@ -48,6 +48,7 @@ AFRAME.registerComponent('prev-one', {
 function updatePositionVisibility(position)
 {
     var camera = document.getElementById("CameraRig")
+    var christVideo = document.getElementById("BecauseOfHim");
 
     if(position === 0)
     {
@@ -71,6 +72,12 @@ function updatePositionVisibility(position)
         document.getElementById("CreationFall").setAttribute("animation","property: visible; to:false; delay:4000; autoplay:true;")
         document.getElementById("EarthLife").setAttribute("animation","property: visible; to:true; delay:1000; autoplay:true;")
         document.getElementById("Atonement").setAttribute("animation","property: visible; to:false; delay:4000; autoplay:true;")
+        christVideo.pause();
+        setTimeout(function () {
+            document.getElementById("Music").components.sound.playSound();
+        }, 3000);
+        document.getElementById("PlayControl").setAttribute("scale",".5 .5");
+        document.getElementById("PauseControl").setAttribute("scale","0 0");
     }
     else if(position === 40)
     {
@@ -83,6 +90,12 @@ function updatePositionVisibility(position)
         document.getElementById("Atonement").setAttribute("animation","property: visible; to:false; delay:4000; autoplay:true;")
         document.getElementById("SpiritWorld").setAttribute("animation","property: visible; to:true; delay:1000; autoplay:true;")
         document.getElementById("Resurrection").setAttribute("animation","property: visible; to:false; delay:4000; autoplay:true;")
+        christVideo.pause();
+        setTimeout(function () {
+            document.getElementById("Music").components.sound.playSound();
+        }, 3000);
+        document.getElementById("PlayControl").setAttribute("scale",".5 .5");
+        document.getElementById("PauseControl").setAttribute("scale","0 0");
     }
     else if(position === 60)
     {
